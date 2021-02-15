@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Bounce</title>
+    <link rel="icon" href="icon.png"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Grandstander:wght@900&family=Open+Sans&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <meta charset="utf-8" />
+    <script src="utility.js"></script>
+    <script src="menu.js"></script>
+    <script src="player.js"></script>
+    <script src="level.js"></script>
+    <script src="levelobjects/levelobject.js"></script>
+    <script src="levelobjects/line.js"></script>
+    <script src="levelobjects/polygon.js"></script>
+    <script src="levelobjects/goal.js"></script>
+    <script src="levelobjects/water.js"></script>
+    <script src="levelobjects/secretarea.js"></script>
+    <script src="levelobjects/spike.js"></script>
+    <script src="collider/collider.js"></script>
+    <script src="collider/line.js"></script>
+    <script src="collider/arc.js"></script>
+    <script src="collider/death.js"></script>
+    <script src="editor.js"></script>
+    <script src="main.js"></script>
+  </head>
+  <body>
+    <div id="ui">
+      <h1 id="title">BOUNCE</h1>
+      <h2 id="version"></h2>
+      <div id="builtinLevels">
+        <span class="levelTitle">
+          CAMPAIGN COMING EVENTUALLY...
+        </span>
+      </div>
+      <div id="customLevels"></div>
+      <div id="customLevelsToolbar">
+        <button class="actionNew" onclick="newCustomLevel( )">
+          NEW
+        </button>
+        <button class="actionUpload" onclick="uploadCustomLevel( )">
+          UPLOAD
+        </button>
+        <button class="actionDownloadAll" onclick="downloadAll( )">
+          DOWNLOAD ALL
+        </button>
+      </div>
+    </div>
+    <div id="popupContainer" style="display: none;">
+      <div id="metadataEditor" class="popup">
+        <h2 class="popupTitle">EDIT METADATA</h2>
+        <span class="popupLabel">TITLE:</span>
+        <input id="titleField" placeholder="Unnamed Level"/>
+        <br/>
+        <span class="popupLabel">DESCRIPTION:</span><br/>
+        <textarea id="discField"></textarea><br/>
+        <span class="popupLabel">AUTHOR:</span>
+        <input id="authorField"/>
+        <div class="popupButtons">
+          <button class="actionConfirm" onclick="confirmMetadata( )">
+            CONFIRM
+          </button>
+          <button class="actionCancel" onclick="cancelMetadata( )">
+            CANCEL
+          </button>
+        </div>
+      </div>
+    </div>
+    <main id="game" style="display: none;"></main>
+  </body>
+</html>
