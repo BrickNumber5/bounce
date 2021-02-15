@@ -1,0 +1,267 @@
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+canvas {
+  display: block;
+}
+
+#ui {
+  width: 100%;
+  height: 100vh;
+  display: block;
+  position: relative;
+  left: 0;
+  top: 0;
+  background: #333;
+}
+
+#title {
+  position: absolute;
+  left: 50%;
+  transform: translate( -50%, 0 );
+  font-family: 'Grandstander', sans-serif;
+  font-size: 8rem;
+  color: #ccc;
+}
+
+#version {
+  position: absolute;
+  top: 10rem;
+  left: 50%;
+  transform: translate( -50%, 0 );
+  font-family: 'Grandstander', sans-serif;
+  font-size: 2rem;
+  color: #3cc;
+}
+
+#builtinLevels {
+  position: absolute;
+  top: 15rem;
+  right: 52%;
+  width: max( 44%, 10rem );
+  height: calc( 100vh - 18rem ); 
+}
+
+#builtinLevels, #customLevels {
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+#builtinLevels::-webkit-scrollbar,
+#customLevels::-webkit-scrollbar {
+  width: 0.5rem;
+}
+
+#builtinLevels::-webkit-scrollbar-thumb,
+#customLevels::-webkit-scrollbar-thumb {
+  width: 0.5rem;
+  background-color: #ccc;
+  border-radius: 999rem;
+}
+
+#customLevels {
+  position: absolute;
+  top: 15rem;
+  left: 52%;
+  width: max( 44%, 10rem );
+  height: calc( 100vh - 23rem );
+}
+
+.levelTitle {
+  font-family: 'Grandstander', sans-serif;
+  font-size: 3rem;
+  color: #ccc;
+}
+
+.builtinLevel {
+  cursor: pointer;
+}
+
+.builtinLevel:hover .levelTitle {
+  color: #3cc;
+}
+
+.levelDisc {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1.5rem;
+  font-style: oblique;
+  color: #ccc;
+}
+
+
+.levelAuthor {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1.5rem;
+  color: #ccc;
+  text-align: right;
+}
+
+.levelAuthor::before {
+  content: "- ";
+}
+
+.levelToolbar {
+  text-align: center;
+}
+
+.levelToolbar button {
+  background: none;
+  border: none;
+  font-family: 'Grandstander', sans-serif;
+  font-size: 2rem;
+  color: #ccc;
+  cursor: pointer;
+  outline: none;
+}
+
+.actionPlay:hover {
+  color: #3cc;
+}
+
+.actionEdit:hover {
+  color: #c3c;
+}
+
+.actionDownload:hover {
+  color: #3c3;
+}
+
+.actionDelete:hover {
+  color: #c33;
+}
+
+.actionMetadata:hover {
+  color: #888;
+}
+
+#customLevelsToolbar {
+  position: absolute;
+  text-align: center;
+  top: calc( 100vh - 6rem );
+  left: 52%;
+  width: max( 44%, 10rem );
+  overflow: hidden;
+  height: 6rem;
+}
+
+#customLevelsToolbar button {
+  background: none;
+  border: none;
+  font-family: 'Grandstander', sans-serif;
+  font-size: 3rem;
+  color: #ccc;
+  cursor: pointer;
+  outline: none;
+}
+
+.actionNew:hover {
+  color: #cc3 !important;
+}
+
+.actionUpload:hover {
+  color: #33c !important;
+}
+
+.actionDownloadAll:hover {
+  color: #3c3 !important;
+}
+
+#popupContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: #000c;
+}
+
+.popup {
+  position: absolute;
+  top: 10vh;
+  left: 10%;
+  width: 80%;
+  height: 80vh;
+  border-radius: 10%;
+  background: #888;
+  align-items: center;
+}
+
+.popupTitle {
+  text-align: center;
+  font-family: 'Grandstander', sans-serif;
+  font-size: 4rem;
+  color: #333;
+}
+
+.popupLabel {
+  font-family: 'Grandstander', sans-serif;
+  font-size: 2rem;
+  color: #333;
+  margin-left: 1rem;
+}
+
+.popup input {
+  background: none;
+  border: none;
+  border-bottom: solid #333 0.3rem;
+  outline: none;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 2rem;
+  color: #333;
+}
+
+.popup input::placeholder {
+  color: #222;
+  font-style: italic;
+}
+
+.popup textarea {
+  margin: none;
+  margin-left: 1rem;
+  background: none;
+  border: none;
+  border-bottom: solid #333 0.3rem;
+  outline: none;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 2rem;
+  color: #333;
+  width: calc( 100% - 2rem );
+  height: 6rem;
+  resize: none;
+}
+
+
+.popup textarea::-webkit-scrollbar {
+  width: 0.5rem;
+}
+
+.popup textarea::-webkit-scrollbar-thumb {
+  width: 0.5rem;
+  background-color: #333;
+  border-radius: 999rem;
+}
+
+.popupButtons {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.popupButtons button {
+  background: none;
+  border: none;
+  font-family: 'Grandstander', sans-serif;
+  font-size: 4rem;
+  color: #333;
+  cursor: pointer;
+  outline: none;
+}
+
+.actionConfirm:hover {
+  color: #383;
+}
+
+.actionCancel:hover {
+  color: #833;
+}
