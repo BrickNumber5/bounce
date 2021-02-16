@@ -5,69 +5,43 @@
     - [ ] angle limiters for sA - eA and inside / outside
  - [x] dash
  - [x] adjust tool
+ - [ ] order tool
+ - [x] goals
+ - [x] out of bounds
   
-  [ ] order tool
+ - [x] trail
   
-  [x] goals
+ - [x] water
+ - [ ] attracters and repulsors
+ - [ ] portals
+ - [ ] toxic gas
+ 
+ - [x] secret areas
+    - [ ] better editor ui
+ - [ ] collectables
+ - [ ] tracks
+ - [ ] decorations
+ - [x] spikes
+    - [ ] fix hitbox bug caused by corner weirdness. maybe add death-point collider?
+ - [ ] doors and keys
+ - [ ] checkpoints
+ - [ ] springs
   
-  [x] out of bounds
+ - [ ] sfx
+ - [ ] custom palletes
+ - [x] level validation
+ - [x] level version marking
   
-  [x] trail
+ - [ ] shift tools
+ - [ ] delete tool
+ - [ ] groups
+ - [ ] optimizations
+ - [ ] frame-rate independent physics
   
-  [x] water
+ - [x] r for restart
+ - [x] d for debug
+ - [ ] documentation
   
-  [ ] attracters and repulsors
-  
-  [ ] portals
-  
-  [ ] toxic gas
-  
-  [x] secret areas
-  
-    [ ] better editor ui
-    
-  [ ] collectables
-  
-  [ ] tracks
-  
-  [ ] decorations
-  
-  [x] spikes
-  
-    [ ] fix hitbox bug caused by corner weirdness. maybe add death-point collider?
-    
-  [ ] doors and keys
-  
-  [ ] checkpoints
-  
-  [ ] springs
-  
-  [ ] sfx
-  
-  [ ] custom palletes
-  
-  [x] level validation
-  
-  [x] level version marking
-  
-  [ ] shift tools
-  
-  [ ] delete tool
-  
-  [ ] groups
-  
-  [ ] optimizations
-  
-  [ ] frame-rate independent physics
-  
-  [x] r for restart
-  
-  [x] d for debug
-  
-  [ ] documentation
-  
-  [ ] touch support
-  
-    [x] gameplay
-    
-    [ ] editor?
+ - [ ] touch support
+    - [x] gameplay
+    - [ ] editor?
