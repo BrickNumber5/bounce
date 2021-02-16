@@ -1,16 +1,10 @@
 ## BOUNCE TODO:
-
-  [x] generate colliders
-  
-  [x] line colliders
-  
-  [x] arc colliders
-  
-    [ ] angle limiters for sA - eA and inside / outside
-    
-  [x] dash
-  
-  [x] adjust tool
+ [x] generate colliders
+ [x] line colliders
+ [x] arc colliders
+ [ ] angle limiters for sA - eA and inside / outside
+ [x] dash
+ [x] adjust tool
   
   [ ] order tool
   
