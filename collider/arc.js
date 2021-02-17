@@ -16,7 +16,7 @@ class ArcCollider extends Collider {
   collision( player, tx, ty ) {
     if ( ( this.x - player.x ) ** 2 + ( this.y - player.y ) ** 2 < ( ( this.d + playerWidth ) / 2 ) ** 2 ) return { collided: false }
     let pta = atan2( player.y - this.y, player.x - this.x )
-    if ( !withinAngle( pta, this.sA, this.eA ) ) return { collided: false }
+    //if ( !withinAngle( pta, this.sA, this.eA ) ) return { collided: false }
     let ins = lineSegmentCircleIntersection(
       player.x, player.y, tx, ty,
       this.x, this.y, ( this.d + playerWidth ) / 2
