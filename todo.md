@@ -2,7 +2,7 @@
  - [x] generate colliders
  - [x] line colliders
  - [x] arc colliders
-    - [ ] angle limiters for sA - eA and inside / outside
+    - [x] angle limiters for sA - eA and inside / outside
  - [x] dash
  - [x] adjust tool
  - [ ] order tool
@@ -22,7 +22,7 @@
  - [ ] tracks
  - [ ] decorations
  - [x] spikes
-    - [ ] fix hitbox bug caused by corner weirdness. maybe add death-point collider?
+    - [x] fix hitbox bug caused by corner weirdness. maybe add death-point collider?
  - [ ] doors and keys
  - [ ] checkpoints
  - [ ] springs
