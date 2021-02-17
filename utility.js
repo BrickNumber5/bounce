@@ -168,6 +168,12 @@ function pointInPolygon( px, py, points ) {
   return nCrosses % 2 === 1
 }
 
+function withinAngle( a, sA, eA ) {
+  a = mod( a - sA, TAU )
+  eA = mod( eA - sA, TAU )
+  return a <= eA
+}
+
 function windowResized( ) {
   resizeCanvas( windowWidth, windowHeight )
 }
