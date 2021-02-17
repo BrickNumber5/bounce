@@ -76,11 +76,23 @@ class Spike extends LevelObject {
         mpx - ( len / 2 - 5 ) * cos( a ) + 15 * cos( a - PI / 2 ),
         mpy - ( len / 2 - 5 ) * sin( a ) + 15 * sin( a - PI / 2 )
       ),
+      new DeathArcCollider(
+        mpx - ( len / 2 - 5 ) * cos( a ) + 15 * cos( a - PI / 2 ),
+        mpy - ( len / 2 - 5 ) * sin( a ) + 15 * sin( a - PI / 2 ),
+        0,
+        a - PI * 0.75, a - PI / 2
+      ),
       new DeathCollider(
         mpx - ( len / 2 - 5 ) * cos( a ) + 15 * cos( a - PI / 2 ),
         mpy - ( len / 2 - 5 ) * sin( a ) + 15 * sin( a - PI / 2 ),
         mpx + ( len / 2 - 5 ) * cos( a ) + 15 * cos( a - PI / 2 ),
         mpy + ( len / 2 - 5 ) * sin( a ) + 15 * sin( a - PI / 2 )
+      ),
+      new DeathArcCollider(
+        mpx + ( len / 2 - 5 ) * cos( a ) + 15 * cos( a - PI / 2 ),
+        mpy + ( len / 2 - 5 ) * sin( a ) + 15 * sin( a - PI / 2 ),
+        0,
+        a + PI * 1.5, a + PI * 1.75
       ),
       new DeathCollider(
         mpx + ( len / 2 - 5 ) * cos( a ) + 15 * cos( a - PI / 2 ),
