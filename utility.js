@@ -10,7 +10,8 @@ const playerWidth = 30, lineWidth = 5,
           actionOff: "#888"
         },
         ui: {
-          main: "#33c"
+          main: "#33c",
+          secondary: "#3c3"
         },
         debug: {
           collider: "#0f0",
@@ -23,11 +24,15 @@ const playerWidth = 30, lineWidth = 5,
         },
         water: "#07f",
         secretarea: "#555",
-        spike: "#c33"
+        spike: "#c33",
+        momentumfield: {
+          bg: "#f80",
+          fg: "#f94"
+        }
       },
       boundsPadding = 50,
       dashStrength = 2,
-      currentVersion = "2.1.1"
+      currentVersion = "2.1.2"
 // Mode | 0 : Menu, 1 : Play, 2 : Edit
 let mode = 0, pmode= 0,
     customLevels = [ ],
@@ -152,6 +157,17 @@ function closestPointOnLineSegment( px, py, ax, ay, bx, by ) {
   let g0 = ( ax - px ) ** 2 + ( ay - py ) ** 2
   let g1 = ( bx - px ) ** 2 + ( by - py ) ** 2
   return g0 <= g1 ? { x: ax, y: ay } : { x: bx, y: by }
+}
+
+function closestPointOnLine( px, py, ax, ay, bx, by ) {
+  let vx = bx - ax
+  let vy = by - ay
+  let ux = ax - px
+  let uy = ay - py
+  let vu = vx * ux + vy * uy
+  let vv = vx ** 2 + vy ** 2
+  let t = -vu / vv
+  return { x: ( 1 - t ) * ax + t * bx, y: ( 1- t ) * ay + t * by }
 }
 
 function pointInPolygon( px, py, points ) {
