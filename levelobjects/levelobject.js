@@ -28,7 +28,8 @@ class LevelObject {
       goal: Goal,
       water: Water,
       secretarea: SecretArea,
-      spike: Spike
+      spike: Spike,
+      momentumfield: MomentumField
     }[ obj.type ].fromSimpleObject( obj )
   }
   generateBoundaries( ) {
