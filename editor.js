@@ -142,6 +142,20 @@ const editorTools = [
       l.x2 = x
       l.y2 = y
     }
+  },
+  { name: "MOMENTUM FIELD", shortcut: "F",
+    mouseStart: ( x, y ) => {
+      activeLevel.levelobjects.push( new MomentumField(
+        0, x, y, x, y, 50, 0.05
+      ) )
+    },
+    mouseDragged: ( x, y ) => {
+      let allo = activeLevel.levelobjects,
+          l = allo[ allo.length - 1 ]
+      l.x2 = x
+      l.y2 = y
+      l.type = 1 * ( ( l.x1 !== l.x2 ) || ( l.y1 !== l.y2 ) )
+    }
   }
 ]
 editorTools[ -1 ] = { name: "NO TOOL SELECTED", shortcut: "" }
