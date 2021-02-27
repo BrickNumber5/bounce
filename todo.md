@@ -21,7 +21,7 @@
  
  - [x] secret areas
     - [ ] better editor ui
- - [ ] collectables
+ - [ ] ~~collectables~~
  - [ ] tracks
  - [ ] decorations
  - [x] spikes
@@ -48,3 +48,5 @@
  - [ ] touch support
     - [x] gameplay
     - [ ] editor?
+
+ - [ ] campaign levels ( 32? )
