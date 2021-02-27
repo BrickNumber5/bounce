@@ -12,7 +12,10 @@
  - [x] trail
   
  - [x] water
- - [ ] attracters and repulsors
+ - [ ] ~~attracters and repulsors~~ momentum fields
+    - [ ] Proper display
+    - [ ] Ability to edit strength
+    - [ ] bounding box generation
  - [ ] portals
  - [ ] toxic gas
  
