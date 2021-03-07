@@ -11,7 +11,8 @@ const playerWidth = 30, lineWidth = 5,
         },
         ui: {
           main: "#33c",
-          secondary: "#3c3"
+          secondary: "#3c3",
+          tertiary: "#c33"
         },
         debug: {
           collider: "#0f0",
@@ -32,7 +33,7 @@ const playerWidth = 30, lineWidth = 5,
       },
       boundsPadding = 50,
       dashStrength = 2,
-      currentVersion = "2.1.2"
+      currentVersion = "2.2.0"
 // Mode | 0 : Menu, 1 : Play, 2 : Edit
 let mode = 0, pmode= 0,
     customLevels = [ ],
