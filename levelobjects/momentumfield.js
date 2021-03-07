@@ -16,6 +16,29 @@ class MomentumField extends LevelObject {
   static strengthToSlider( s ) {
     return Math.sign( s ) * Math.sqrt( 500 * Math.abs( s ) )
   }
+  generateBoundaries( ) {
+    if ( this.type ) {
+      let b = { x1: Infinity, y1: Infinity, x2: -Infinity, y2: -Infinity }
+      let a = atan2( this.y2 - this.y1, this.x2 - this.x1 )
+      let pos = [
+        { x: this.x1, y: this.y1 },
+        { x: this.x2, y: this.y2 },
+        { x: this.x1 + this.range * cos( a - PI / 2 ), y: this.y1 + this.range * sin( a - PI / 2 ) },
+        { x: this.x2 + this.range * cos( a - PI / 2 ), y: this.y2 + this.range * sin( a - PI / 2 ) }
+      ]
+      for ( let i = 0; i < 4; i++ ) {
+        b.x1 = min( b.x1, pos[ i ].x )
+        b.y1 = min( b.y1, pos[ i ].y )
+        b.x2 = max( b.x2, pos[ i ].x )
+        b.y2 = max( b.y2, pos[ i ].y )
+      }
+      return b
+    } else {
+      return {
+        x1: this.x1 - this.range, y1: this.y1 - this.range, x2: this.x1 + this.range, y2: this.y1 + this.range
+      }
+    }
+  }
   drawBackground( ) {
     stroke( pallete.background )
     strokeWeight( lineWidth )
