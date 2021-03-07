@@ -10,6 +10,12 @@ class MomentumField extends LevelObject {
     this.range = range
     this.strength = strength
   }
+  static sliderToStrength( s ) {
+    return Math.sign( s ) * ( s ** 2 ) / 500
+  }
+  static strengthToSlider( s ) {
+    return Math.sign( s ) * Math.sqrt( 500 * Math.abs( s ) )
+  }
   drawBackground( ) {
     stroke( pallete.background )
     strokeWeight( lineWidth )
@@ -30,18 +36,34 @@ class MomentumField extends LevelObject {
   }
   drawEditorUI( ) {
     if ( editorTool === 0 ) {
+      fill( "#fff" )
       let mpx = this.x1 + ( this.x2 - this.x1 ) / 2,
           mpy = this.y1 + ( this.y2 - this.y1 ) / 2
       let a = atan2( this.y2 - this.y1, this.x2 - this.x1 )
+      let rx = mpx + this.range * cos( a - PI / 2 ),
+          ry = mpy + this.range * sin( a - PI / 2 )
+      let mprx = mpx + ( rx - mpx ) / 2,
+          mpry = mpy + ( ry - mpy ) / 2
+      let srx = mprx - 50 * cos( a ),
+          sry = mpry - 50 * sin( a ),
+          erx = mprx + 50 * cos( a ),
+          ery = mpry + 50 * sin( a )
+      let ss = MomentumField.strengthToSlider( this.strength ) / 50
+      let rxp = erx * ss + mprx * ( 1 - ss ),
+          ryp = ery * ss + mpry * ( 1 - ss )
       stroke( pallete.ui.secondary )
-      line( mpx, mpy, mpx + this.range * cos( a - PI / 2 ), mpy + this.range * sin( a - PI / 2 ) )
+      line( mpx, mpy, rx, ry )
       circle( mpx + this.range * cos( a - PI / 2 ), mpy + this.range * sin( a - PI / 2 ), 8 / cameraScale )
       stroke( pallete.ui.main )
       strokeWeight( 3 / cameraScale )
       line( this.x1, this.y1, this.x2, this.y2 )
-      fill( "#fff" )
       circle( this.x1, this.y1, 8 / cameraScale )
       circle( this.x2, this.y2, 8 / cameraScale )
+      stroke( pallete.ui.tertiary )
+      line( srx, sry, erx, ery )
+      line( srx - 5 * cos( a - PI / 2 ), sry - 5 * sin( a - PI / 2 ), srx + 5 * cos( a - PI / 2 ), sry + 5 * sin( a - PI / 2 ) )
+      line( erx - 5 * cos( a - PI / 2 ), ery - 5 * sin( a - PI / 2 ), erx + 5 * cos( a - PI / 2 ), ery + 5 * sin( a - PI / 2 ) )
+      circle( rxp, ryp, 8 / cameraScale )
     }
   }
   update( ) {
@@ -75,18 +97,30 @@ class MomentumField extends LevelObject {
   tryAdjust( x, y ) {
     let d = ( 11 / cameraScale ) / 2
     let point = 0
+    let mpx = this.x1 + ( this.x2 - this.x1 ) / 2,
+        mpy = this.y1 + ( this.y2 - this.y1 ) / 2
+    let a = atan2( this.y2 - this.y1, this.x2 - this.x1 )
+    let rpx = mpx + this.range * cos( a - PI / 2 ),
+        rpy = mpy + this.range * sin( a - PI / 2 )
+    let mprx = mpx + ( rpx - mpx ) / 2,
+        mpry = mpy + ( rpy - mpy ) / 2
+    let srx = mprx - 50 * cos( a ),
+        sry = mpry - 50 * sin( a ),
+        erx = mprx + 50 * cos( a ),
+        ery = mpry + 50 * sin( a )
+    let ss = MomentumField.strengthToSlider( this.strength ) / 50
+    let rxp = erx * ss + mprx * ( 1 - ss ),
+        ryp = ery * ss + mpry * ( 1 - ss )
     if ( ( this.x1 - x ) ** 2 + ( this.y1 - y ) ** 2 <= d ** 2 ) {
       point = 1
     }
     if ( ( this.x2 - x ) ** 2 + ( this.y2 - y ) ** 2 <= d ** 2 ) {
       point = 2
     }
+    if ( ( rxp - x ) ** 2 + ( ryp - y ) ** 2 <= d ** 2 ) {
+      point = 4
+    }
     if ( point === 0 ) {
-      let mpx = this.x1 + ( this.x2 - this.x1 ) / 2,
-          mpy = this.y1 + ( this.y2 - this.y1 ) / 2
-      let a = atan2( this.y2 - this.y1, this.x2 - this.x1 )
-      let rpx = mpx + this.range * cos( a - PI / 2 ),
-          rpy = mpy + this.range * sin( a - PI / 2 )
       if ( ( rpx - x ) ** 2 + ( rpy - y ) ** 2 <= d ** 2 ) point = 3
       if ( point === 0 ) return false
     }
@@ -99,10 +133,15 @@ class MomentumField extends LevelObject {
           if ( t.type ) {
             let clp = closestPointOnLine( x, y, t.x1, t.y1, t.x2, t.y2 )
             t.range = round( sqrt( ( clp.x - x ) ** 2 + ( clp.y - y ) ** 2 ) / 10 ) * 10
-            
           } else {
             t.range = round( sqrt( ( t.x1 - x ) ** 2 + ( t.y1 - y ) ** 2 ) / 10 ) * 10
           }
+          return
+        }
+        if ( point === 4 ) {
+          let clp = closestPointOnLineSegment( x, y, srx, sry, erx, ery )
+          let tx = 100 * ( clp.x - srx ) / ( erx - srx ) - 50
+          t.strength = MomentumField.sliderToStrength( tx )
           return
         }
         x = round( x / 10 ) * 10
@@ -119,7 +158,7 @@ class MomentumField extends LevelObject {
         t.type = 1 * ( ( t.x1 !== t.x2 ) || ( t.y1 !== t.y2 ) )
       },
       finish: ( x, y ) => {
-        if ( !origin || point === 3 ) return
+        if ( !origin || ( point === 3 ) || ( point === 4 ) ) return
         if ( t.type ) {
           this.type = 0
           if ( point === 1 ) {
