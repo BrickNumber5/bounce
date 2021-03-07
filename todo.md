@@ -14,8 +14,8 @@
  - [x] water
  - [ ] ~~attracters and repulsors~~ momentum fields
     - [ ] Proper display
-    - [ ] Ability to edit strength
-    - [ ] bounding box generation
+    - [x] Ability to edit strength
+    - [x] bounding box generation
  - [ ] portals
  - [ ] toxic gas
  
