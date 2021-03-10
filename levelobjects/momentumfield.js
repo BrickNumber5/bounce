@@ -75,10 +75,10 @@ class MomentumField extends LevelObject {
       let rxp = erx * ss + mprx * ( 1 - ss ),
           ryp = ery * ss + mpry * ( 1 - ss )
       stroke( pallete.ui.secondary )
+      strokeWeight( 3 / cameraScale )
       line( mpx, mpy, rx, ry )
       circle( mpx + this.range * cos( a - PI / 2 ), mpy + this.range * sin( a - PI / 2 ), 8 / cameraScale )
       stroke( pallete.ui.main )
-      strokeWeight( 3 / cameraScale )
       line( this.x1, this.y1, this.x2, this.y2 )
       circle( this.x1, this.y1, 8 / cameraScale )
       circle( this.x2, this.y2, 8 / cameraScale )
