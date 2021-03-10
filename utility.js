@@ -33,7 +33,7 @@ const playerWidth = 30, lineWidth = 5,
       },
       boundsPadding = 50,
       dashStrength = 2,
-      currentVersion = "2.2.1"
+      currentVersion = "2.2.2"
 // Mode | 0 : Menu, 1 : Play, 2 : Edit
 let mode = 0, pmode= 0,
     customLevels = [ ],
