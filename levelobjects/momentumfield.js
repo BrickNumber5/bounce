@@ -163,7 +163,7 @@ class MomentumField extends LevelObject {
         }
         if ( point === 4 ) {
           let clp = closestPointOnLineSegment( x, y, srx, sry, erx, ery )
-          let tx = 100 * ( clp.x - srx ) / ( erx - srx ) - 50
+          let tx = 100 * ( ( erx - srx === 0 ) ? ( ( clp.y - sry ) / ( ery - sry ) ) : ( ( clp.x - srx ) / ( erx - srx ) ) ) - 50
           t.strength = MomentumField.sliderToStrength( tx )
           return
         }
